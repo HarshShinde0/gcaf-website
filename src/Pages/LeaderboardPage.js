@@ -7,9 +7,22 @@ const LeaderboardPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const [sortConfig, setSortConfig] = useState({ key: null, direction: 'asc' });
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [showModal, setShowModal] = useState(false);
+
+  // Define the columns to show in the leaderboard
+  const leaderboardColumns = [
+    'User Name',
+    'Access Code Redemption Status', 
+    '# of Skill Badges Completed',
+    '# of Arcade Games Completed',
+    '# of Trivia Games Completed',
+    'Milestone Earned'
+  ];
 
   useEffect(() => {
-    fetch('/data.json')
+    // Add timestamp to prevent caching
+    fetch(`/python-scripts/data.json?t=${Date.now()}`)
       .then(response => response.json())
       .then(data => {
         setData(data);
@@ -37,8 +50,6 @@ const LeaderboardPage = () => {
     const m3 = data.filter(row => row['Milestone Earned'] === 'Milestone 3').length;
     const m2 = data.filter(row => row['Milestone Earned'] === 'Milestone 2').length;
     const m1 = data.filter(row => row['Milestone Earned'] === 'Milestone 1').length;
-
-
 
     return { total, ultimate, m3, m2, m1 };
   };
@@ -101,6 +112,16 @@ const LeaderboardPage = () => {
     return `<span class="${badgeClass}">${num}</span>`;
   };
 
+  const handleUserNameClick = (userData) => {
+    setSelectedUser(userData);
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedUser(null);
+  };
+
   const stats = updateStats(data);
 
   return (
@@ -114,64 +135,61 @@ const LeaderboardPage = () => {
       </Helmet>
 
       <div className="min-h-screen py-2">
-
-
-
-
         {/* Leaderboard Section */}
         <div className="px-4 py-8">
           <div className="max-w-7xl mx-auto">
             <div className="bg-white/80 dark:bg-[--surface-color]/80 backdrop-blur-xl rounded-3xl border-2 border-black overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.1)]">
-                              {/* Leaderboard Header with Stats */}
-                <div className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white p-6">
-                  <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-                    {/* Left - Leaderboard Title */}
-                    <h2 className="text-3xl font-bold">Leaderboard</h2>
-                    
-                    {/* Center - Search Box */}
-                    <div className="relative w-full md:w-80">
-                      <input 
-                        type="text" 
-                        placeholder="Search participants..." 
-                        className="w-full px-4 py-2 border-2 border-white/30 rounded-full focus:border-white focus:outline-none transition-colors bg-white/20 text-white placeholder-white/70"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                      />
-                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-                        <i className="fas fa-search text-white/70"></i>
-                      </div>
+              {/* Leaderboard Header with Stats */}
+              <div className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white p-6">
+                <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                  {/* Left - Leaderboard Title */}
+                  <h2 className="text-3xl font-bold">Leaderboard</h2>
+                  
+                  {/* Center - Search Box */}
+                  <div className="relative w-full md:w-80">
+                    <input 
+                      type="text" 
+                      placeholder="Search participants..." 
+                      className="w-full px-4 py-2 border-2 border-white/30 rounded-full focus:border-white focus:outline-none transition-colors bg-white/20 text-white placeholder-white/70"
+                      value={searchTerm}
+                      onChange={(e) => setSearchTerm(e.target.value)}
+                    />
+                    <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                      <i className="fas fa-search text-white/70"></i>
                     </div>
-                    
-                    {/* Right - Stats */}
-                    <div className="flex gap-4 flex-wrap justify-center">
-                      <div className="text-center">
-                        <div className="text-2xl font-bold">{stats.total}</div>
-                        <div className="text-sm opacity-90">Total</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold">{stats.ultimate}</div>
-                        <div className="text-sm opacity-90">Ultimate</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold">{stats.m3}</div>
-                        <div className="text-sm opacity-90">M3</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold">{stats.m2}</div>
-                        <div className="text-sm opacity-90">M2</div>
-                      </div>
-                      <div className="text-center">
-                        <div className="text-2xl font-bold">{stats.m1}</div>
-                        <div className="text-sm opacity-90">M1</div>
-                      </div>
+                  </div>
+                  
+                  {/* Right - Stats */}
+                  <div className="flex gap-4 flex-wrap justify-center">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{stats.total}</div>
+                      <div className="text-sm opacity-90">Total</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{stats.ultimate}</div>
+                      <div className="text-sm opacity-90">Ultimate</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{stats.m3}</div>
+                      <div className="text-sm opacity-90">M3</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{stats.m2}</div>
+                      <div className="text-sm opacity-90">M2</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold">{stats.m1}</div>
+                      <div className="text-sm opacity-90">M1</div>
                     </div>
                   </div>
                 </div>
+              </div>
+              
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white">
                     <tr>
-                      {data.length > 0 && Object.keys(data[0]).map((header, index) => (
+                      {leaderboardColumns.map((header, index) => (
                         <th 
                           key={index}
                           className="px-6 py-4 text-left font-semibold cursor-pointer hover:bg-white/10 transition-colors"
@@ -190,25 +208,40 @@ const LeaderboardPage = () => {
                   <tbody className="divide-y divide-black/20 bg-white/70 dark:bg-[--surface-color]/70">
                     {filteredData.map((row, rowIndex) => (
                       <tr key={rowIndex} className="hover:bg-[--hover-color] transition-colors">
-                        {Object.keys(data[0] || {}).map((header, cellIndex) => {
+                        {leaderboardColumns.map((header, cellIndex) => {
                           const cellContent = row[header];
-                          let cellHtml = '';
-
-                          if (header === 'Access Code Redemption Status') {
-                            cellHtml = createStatusBadge(cellContent);
+                          
+                          if (header === 'User Name') {
+                            // Make user name clickable
+                            return (
+                              <td key={cellIndex} className="px-6 py-4">
+                                <button
+                                  onClick={() => handleUserNameClick(row)}
+                                  className="text-blue-600 hover:text-blue-800 underline cursor-pointer bg-transparent border-none p-0 text-left"
+                                >
+                                  {cellContent || '-'}
+                                </button>
+                              </td>
+                            );
+                          } else if (header === 'Access Code Redemption Status') {
+                            return (
+                              <td key={cellIndex} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: createStatusBadge(cellContent) }}></td>
+                            );
                           } else if (header === 'Milestone Earned') {
-                            cellHtml = createMilestoneBadge(cellContent);
+                            return (
+                              <td key={cellIndex} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: createMilestoneBadge(cellContent) }}></td>
+                            );
                           } else if (header === '# of Skill Badges Completed' || 
                                      header === '# of Arcade Games Completed' || 
                                      header === '# of Trivia Games Completed') {
-                            cellHtml = createNumberBadge(cellContent);
+                            return (
+                              <td key={cellIndex} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: createNumberBadge(cellContent) }}></td>
+                            );
                           } else {
-                            cellHtml = cellContent || '-';
+                            return (
+                              <td key={cellIndex} className="px-6 py-4">{cellContent || '-'}</td>
+                            );
                           }
-
-                          return (
-                            <td key={cellIndex} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: cellHtml }}></td>
-                          );
                         })}
                       </tr>
                     ))}
@@ -218,6 +251,166 @@ const LeaderboardPage = () => {
             </div>
           </div>
         </div>
+
+        {/* User Details Modal */}
+        {showModal && selectedUser && (
+          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+            <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto mt-16">
+              {/* Modal Header */}
+              <div className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white p-6 rounded-t-2xl sticky top-0 z-10">
+                <div className="flex justify-between items-center">
+                  <h2 className="text-2xl font-bold">{selectedUser['User Name']}</h2>
+                  <button
+                    onClick={closeModal}
+                    className="text-white hover:text-gray-200 text-2xl font-bold"
+                  >
+                    ×
+                  </button>
+                </div>
+              </div>
+
+              {/* Modal Content */}
+              <div className="p-6">
+                {/* Stats Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                  <div className="bg-blue-50 p-4 rounded-lg text-center border border-blue-200">
+                    <div className="text-2xl font-bold text-blue-600">{selectedUser['# of Skill Badges Completed'] || 0}</div>
+                    <div className="text-sm text-gray-600">Skill Badges</div>
+                  </div>
+                  <div className="bg-green-50 p-4 rounded-lg text-center border border-green-200">
+                    <div className="text-2xl font-bold text-green-600">{selectedUser['# of Arcade Games Completed'] || 0}</div>
+                    <div className="text-sm text-gray-600">Arcade Games</div>
+                  </div>
+                  <div className="bg-purple-50 p-4 rounded-lg text-center border border-purple-200">
+                    <div className="text-2xl font-bold text-purple-600">{selectedUser['# of Trivia Games Completed'] || 0}</div>
+                    <div className="text-sm text-gray-600">Trivia Games</div>
+                  </div>
+                  <div className="bg-orange-50 p-4 rounded-lg text-center border border-orange-200">
+                    <div className="text-2xl font-bold text-orange-600">{selectedUser['# of Lab-free Courses Completed'] || 0}</div>
+                    <div className="text-sm text-gray-600">Lab-free Courses</div>
+                  </div>
+                </div>
+
+                {/* Detailed Sections */}
+                <div className="space-y-6">
+                  {/* Skill Badges */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-blue-500 rounded-full mr-2"></span>
+                      Names of Completed Skill Badges
+                    </h3>
+                    <div className="space-y-2">
+                      {selectedUser['Names of Completed Skill Badges'] ? 
+                        selectedUser['Names of Completed Skill Badges'].split(' | ').map((badge, index) => (
+                          <div key={index} className="bg-white p-3 rounded border border-gray-200 text-sm">
+                            {badge}
+                          </div>
+                        )) : 
+                        <div className="bg-white p-3 rounded border border-gray-200 text-gray-500 text-sm">
+                          No skill badges completed yet
+                        </div>
+                      }
+                    </div>
+                  </div>
+
+                  {/* Arcade Games */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
+                      Names of Completed Arcade Games
+                    </h3>
+                    <div className="space-y-2">
+                      {selectedUser['Names of Completed Arcade Games'] ? 
+                        selectedUser['Names of Completed Arcade Games'].split(' | ').map((game, index) => (
+                          <div key={index} className="bg-white p-3 rounded border border-gray-200 text-sm">
+                            {game}
+                          </div>
+                        )) : 
+                        <div className="bg-white p-3 rounded border border-gray-200 text-gray-500 text-sm">
+                          No arcade games completed yet
+                        </div>
+                      }
+                    </div>
+                  </div>
+
+                  {/* Trivia Games */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-purple-500 rounded-full mr-2"></span>
+                      Names of Completed Trivia Games
+                    </h3>
+                    <div className="space-y-2">
+                      {selectedUser['Names of Completed Trivia Games'] ? 
+                        selectedUser['Names of Completed Trivia Games'].split(' | ').map((trivia, index) => (
+                          <div key={index} className="bg-white p-3 rounded border border-gray-200 text-sm">
+                            {trivia}
+                          </div>
+                        )) : 
+                        <div className="bg-white p-3 rounded border border-gray-200 text-gray-500 text-sm">
+                          No trivia games completed yet
+                        </div>
+                      }
+                    </div>
+                  </div>
+
+                  {/* Lab-free Courses */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                      Names of Completed Lab-free Courses
+                    </h3>
+                    <div className="space-y-2">
+                      {selectedUser['Names of Completed Lab-free Courses'] ? 
+                        selectedUser['Names of Completed Lab-free Courses'].split(' | ').map((course, index) => (
+                          <div key={index} className="bg-white p-3 rounded border border-gray-200 text-sm">
+                            {course}
+                          </div>
+                        )) : 
+                        <div className="bg-white p-3 rounded border border-gray-200 text-gray-500 text-sm">
+                          No lab-free courses completed yet
+                        </div>
+                      }
+                    </div>
+                  </div>
+
+                  {/* Profile Information */}
+                  <div className="bg-gray-50 p-4 rounded-lg">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center">
+                      <span className="w-2 h-2 bg-gray-500 rounded-full mr-2"></span>
+                      Profile Information
+                    </h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                      <div className="bg-white p-3 rounded border border-gray-200">
+                        <span className="font-medium text-gray-700">Profile Status:</span>
+                        <div className="text-sm text-gray-600 mt-1">{selectedUser['Profile URL Status'] || 'Not provided'}</div>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-gray-200">
+                        <span className="font-medium text-gray-700">Access Code Status:</span>
+                        <div className="text-sm text-gray-600 mt-1">{selectedUser['Access Code Redemption Status'] || 'Not provided'}</div>
+                      </div>
+                      <div className="bg-white p-3 rounded border border-gray-200">
+                        <span className="font-medium text-gray-700">Milestone Earned:</span>
+                        <div className="text-sm text-gray-600 mt-1">{selectedUser['Milestone Earned'] || 'No milestone yet'}</div>
+                      </div>
+                    </div>
+                    {selectedUser['Google Cloud Skills Boost Profile URL'] && (
+                      <div className="mt-3">
+                        <a 
+                          href={selectedUser['Google Cloud Skills Boost Profile URL']} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm"
+                        >
+                          View Google Cloud Profile
+                        </a>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         <Backgroound />
       </div>

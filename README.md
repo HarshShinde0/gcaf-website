@@ -89,47 +89,6 @@ No environment variables are required for basic functionality. The application i
 - **Output Directory**: `build`
 - **Node Version**: 18.x or higher (recommended)
 
-## Automated Leaderboard System
-
-The leaderboard automatically updates when you modify the `data.csv` file. The system includes:
-
-### How It Works
-1. **CSV Source**: Update `python-scripts/data.csv` with new participant data
-2. **Automatic Conversion**: Python scripts convert CSV to JSON format
-3. **Real-time Updates**: Leaderboard at `/leaderboard` reflects changes immediately
-
-### Setup Options
-
-#### Option 1: Local File Watching (Recommended for Development)
-```bash
-cd python-scripts
-./start_watcher.sh  # Linux/Mac
-# or
-start_watcher.bat   # Windows
-```
-
-#### Option 2: One-time Conversion
-```bash
-cd python-scripts
-python convert_once.py
-```
-
-#### Option 3: GitHub Actions (Automatic)
-- Push changes to `data.csv` on GitHub
-- GitHub Actions automatically converts to JSON
-- Website updates automatically
-
-### File Structure
-```
-python-scripts/
-├── data.csv          # Your source data (update this)
-├── data.json         # Generated JSON (auto-updated)
-├── main.py           # File watcher script
-├── convert_once.py   # One-time converter
-├── requirements.txt  # Python dependencies
-└── README.md         # Detailed setup instructions
-```
-
 ## Deployment
 
 ### Vercel Deployment
