@@ -1,0 +1,9 @@
+nohup: ignoring input
+2025-08-19 17:13:42,145 - Performing initial CSV to JSON conversion...
+2025-08-19 17:13:42,152 - Loaded CSV with 249 rows
+2025-08-19 17:13:42,155 - Successfully converted CSV to JSON. Saved 249 records to data.json
+2025-08-19 17:13:42,155 - Initial conversion completed successfully!
+2025-08-19 17:13:42,156 - Starting CSV file watcher...
+2025-08-19 17:13:42,156 - Watching for changes in data.csv
+2025-08-19 17:13:42,157 - Press Ctrl+C to stop
+2025-08-19 17:13:53,694 - Stopping CSV file watcher...

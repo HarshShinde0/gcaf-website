@@ -1,0 +1,59 @@
+name: Update Leaderboard Data
+
+on:
+  push:
+    paths:
+      - 'python-scripts/data.csv'
+    branches:
+      - main
+
+jobs:
+  update-leaderboard:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+        
+    - name: Install dependencies
+      run: |
+        cd python-scripts
+        pip install -r requirements.txt
+        
+    - name: Convert CSV to JSON
+      run: |
+        cd python-scripts
+        python -c "
+        import pandas as pd
+        import json
+        
+        # Load the CSV file
+        data = pd.read_csv('data.csv')
+        
+        # Select the specific columns
+        selected_columns = data[['User Name', 'Access Code Redemption Status', '# of Skill Badges Completed', 
+                               '# of Arcade Games Completed', '# of Trivia Games Completed', 'Milestone Earned']]
+        
+        # Sort the data by skill badges completed (descending)
+        sorted_data = selected_columns.sort_values(by='# of Skill Badges Completed', ascending=False)
+        
+        # Convert to JSON and save
+        json_data = sorted_data.to_json(orient='records', indent=2)
+        with open('data.json', 'w') as f:
+            f.write(json_data)
+        
+        print(f'Successfully converted {len(sorted_data)} records to data.json')
+        "
+        
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add python-scripts/data.json
+        git commit -m "Auto-update leaderboard data from CSV" || echo "No changes to commit"
+        git push
