@@ -498,80 +498,112 @@ body {
 /* Badge Styles */
 .status-badge {
     display: inline-block;
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 8px 20px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px var(--box-shadow);
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .status-yes {
-    background: linear-gradient(135deg, var(--google-green), #00c851);
+    background: linear-gradient(135deg, #10b981, #059669);
     color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .status-no {
-    background: linear-gradient(135deg, var(--google-red), #ff4444);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
+    border-color: #ef4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
 }
 
 .milestone-badge {
     display: inline-block;
-    padding: 8px 16px;
-    border-radius: 20px;
-    font-size: 12px;
-    font-weight: 600;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-size: 13px;
+    font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    box-shadow: 0 2px 4px var(--box-shadow);
+    letter-spacing: 0.8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .milestone-badge.ultimate {
-    background: linear-gradient(135deg, var(--google-yellow), #ffd700);
-    color: #000;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border-color: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
 .milestone-badge.m3 {
-    background: linear-gradient(135deg, var(--google-red), #ff6b6b);
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
     color: white;
+    border-color: #dc2626;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
 .milestone-badge.m2 {
-    background: linear-gradient(135deg, var(--google-green), #4ecdc4);
+    background: linear-gradient(135deg, #059669, #047857);
     color: white;
+    border-color: #059669;
+    box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
 }
 
 .milestone-badge.m1 {
-    background: linear-gradient(135deg, var(--google-blue), #a8e6cf);
+    background: linear-gradient(135deg, #2563eb, #1d4ed8);
     color: white;
+    border-color: #2563eb;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
 .number-badge {
     display: inline-block;
-    padding: 6px 12px;
-    border-radius: 16px;
-    font-size: 12px;
-    font-weight: 600;
-    min-width: 28px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 700;
+    min-width: 32px;
     text-align: center;
-    box-shadow: 0 2px 4px var(--box-shadow);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
 }
 
 .number-badge.high {
-    background: linear-gradient(135deg, var(--google-green), #00c851);
+    background: linear-gradient(135deg, #10b981, #059669);
     color: white;
+    border-color: #10b981;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .number-badge.medium {
-    background: linear-gradient(135deg, var(--google-yellow), #ffbb33);
-    color: #000;
+    background: linear-gradient(135deg, #f59e0b, #d97706);
+    color: white;
+    border-color: #f59e0b;
+    box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
 }
 
 .number-badge.low {
-    background: linear-gradient(135deg, var(--google-red), #ff4444);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
     color: white;
+    border-color: #ef4444;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* Hover effects for badges */
+.status-badge:hover,
+.milestone-badge:hover,
+.number-badge:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
 }
 
 /* Responsive Design */

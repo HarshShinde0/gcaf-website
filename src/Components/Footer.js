@@ -2,6 +2,7 @@ import {
   FaLinkedin,
   FaGlobe,
   FaCalendarCheck,
+  FaWhatsapp,
 } from "react-icons/fa";
 
 const Footer = () => {
@@ -25,6 +26,15 @@ const Footer = () => {
                 rel="noopener noreferrer"
               >
                 <FaLinkedin className="text-xl text-blue-600" />
+              </a>
+              <a
+                href="https://chat.whatsapp.com/JgF4BHzzcv3Jj3pX0aTeil"
+                className="bg-white shadow-lg font-normal h-10 w-10 flex items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
+                type="button"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <FaWhatsapp className="text-xl text-green-600" />
               </a>
               <a
                 href="https://go.cloudskillsboost.google/arcade"

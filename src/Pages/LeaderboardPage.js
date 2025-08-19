@@ -113,62 +113,60 @@ const LeaderboardPage = () => {
         />
       </Helmet>
 
-      <div className="min-h-screen py-16">
-        {/* Hero Section */}
-        <div className="flex py-12 flex-col justify-center items-center md:px-60 px-4 text-center">
-          <h1 className="text-5xl font-bold mb-6 text-[--google-blue]">
-            🏆 GCAF Leaderboard
-          </h1>
-          <p className="text-xl leading-relaxed text-[--text-secondary]">
-            Track the progress and achievements of Google Cloud Arcade Facilitator '25 participants. 
-            Monitor milestones, skill badges, and arcade game completions in real-time.
-          </p>
-        </div>
+      <div className="min-h-screen py-2">
 
-        {/* Stats Cards */}
-        <div className="flex justify-center gap-8 py-8 flex-wrap px-4">
-          <div className="bg-gradient-to-br from-[--google-blue] to-[--google-green] text-white p-6 rounded-2xl text-center min-w-[200px] shadow-lg">
-            <div className="text-4xl font-bold mb-2">{stats.total}</div>
-            <div className="text-lg">Total Participants</div>
-          </div>
-          <div className="bg-gradient-to-br from-[--google-yellow] to-[--google-red] text-white p-6 rounded-2xl text-center min-w-[200px] shadow-lg">
-            <div className="text-4xl font-bold mb-2">{stats.ultimate}</div>
-            <div className="text-lg">Ultimate Milestone</div>
-          </div>
-          <div className="bg-gradient-to-br from-[--google-green] to-[--google-blue] text-white p-6 rounded-2xl text-center min-w-[200px] shadow-lg">
-            <div className="text-4xl font-bold mb-2">{stats.m3}</div>
-            <div className="text-lg">Milestone 3</div>
-          </div>
-          <div className="bg-gradient-to-br from-[--google-red] to-[--google-yellow] text-white p-6 rounded-2xl text-center min-w-[200px] shadow-lg">
-            <div className="text-4xl font-bold mb-2">{stats.m2}</div>
-            <div className="text-lg">Milestone 2</div>
-          </div>
-          <div className="bg-gradient-to-br from-[--google-blue] to-[--google-green] text-white p-6 rounded-2xl text-center min-w-[200px] shadow-lg">
-            <div className="text-4xl font-bold mb-2">{stats.m1}</div>
-            <div className="text-lg">Milestone 1</div>
-          </div>
-        </div>
 
-        {/* Search Section */}
-        <div className="flex justify-center py-8">
-          <div className="relative max-w-md w-full">
-            <input 
-              type="text" 
-              placeholder="Search participants..." 
-              className="w-full px-6 py-3 border-2 border-[--border-color] rounded-full focus:border-[--google-blue] focus:outline-none transition-colors"
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-            <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
-              <i className="fas fa-search text-[--text-secondary]"></i>
-            </div>
-          </div>
-        </div>
+
 
         {/* Leaderboard Section */}
         <div className="px-4 py-8">
           <div className="max-w-7xl mx-auto">
-            <div className="bg-white dark:bg-[--surface-color] rounded-2xl border-2 border-[--border-color] overflow-hidden shadow-lg">
+            <div className="bg-white/80 dark:bg-[--surface-color]/80 backdrop-blur-xl rounded-3xl border-2 border-black overflow-hidden shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25)] dark:shadow-[0_25px_50px_-12px_rgba(255,255,255,0.1)]">
+                              {/* Leaderboard Header with Stats */}
+                <div className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white p-6">
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+                    {/* Left - Leaderboard Title */}
+                    <h2 className="text-3xl font-bold">Leaderboard</h2>
+                    
+                    {/* Center - Search Box */}
+                    <div className="relative w-full md:w-80">
+                      <input 
+                        type="text" 
+                        placeholder="Search participants..." 
+                        className="w-full px-4 py-2 border-2 border-white/30 rounded-full focus:border-white focus:outline-none transition-colors bg-white/20 text-white placeholder-white/70"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                      />
+                      <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+                        <i className="fas fa-search text-white/70"></i>
+                      </div>
+                    </div>
+                    
+                    {/* Right - Stats */}
+                    <div className="flex gap-4 flex-wrap justify-center">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">{stats.total}</div>
+                        <div className="text-sm opacity-90">Total</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">{stats.ultimate}</div>
+                        <div className="text-sm opacity-90">Ultimate</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">{stats.m3}</div>
+                        <div className="text-sm opacity-90">M3</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">{stats.m2}</div>
+                        <div className="text-sm opacity-90">M2</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">{stats.m1}</div>
+                        <div className="text-sm opacity-90">M1</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white">
@@ -189,7 +187,7 @@ const LeaderboardPage = () => {
                       ))}
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-[--border-color]">
+                  <tbody className="divide-y divide-black/20 bg-white/70 dark:bg-[--surface-color]/70">
                     {filteredData.map((row, rowIndex) => (
                       <tr key={rowIndex} className="hover:bg-[--hover-color] transition-colors">
                         {Object.keys(data[0] || {}).map((header, cellIndex) => {

@@ -16,34 +16,63 @@ const GCAFPage = () => {
 
       <div className="min-h-screen py-16">
         {/* Hero Section */}
-        <div className="flex py-16 flex-col justify-center items-center md:px-20 px-4 text-center">
-          <div className="mb-8">
-            <div className="text-6xl mb-4">☁️</div>
-            <h1 className="text-6xl font-bold mb-6 text-[--google-blue]">
-              Google Cloud Arcade Facilitator Program
-            </h1>
-            <p className="text-2xl leading-relaxed text-[--default-font-color] mb-8 max-w-4xl">
-              Empowering individuals to thrive in the ever-evolving world of cloud computing through hands-on learning experiences, dedicated mentorship, and a supportive community.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a 
-                href="https://rsvp.withgoogle.com/events/arcade-facilitator" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="btn btn-primary bg-[--google-blue] hover:bg-[--google-green] text-white text-lg px-8 py-4"
-              >
-                <FaCalendarCheck className="mr-2" />
-                Join the Program
-              </a>
-              <Link
-                to="/leaderboard"
-                className="btn btn-outline border-2 border-[--google-blue] text-[--google-blue] hover:bg-[--google-blue] hover:text-white text-lg px-8 py-4"
-              >
-                <FaTrophy className="mr-2" />
-                View Leaderboard
-              </Link>
+        <div className="relative overflow-hidden">
+          {/* Background Gradient */}
+          <div className="absolute inset-0 bg-gradient-to-br from-[--google-blue]/10 via-[--google-green]/5 to-[--google-yellow]/10"></div>
+          
+          {/* Hero Content */}
+          <div className="relative flex py-20 flex-col justify-center items-center md:px-20 px-4 text-center">
+            <div className="mb-12">
+              {/* Cloud Icon with Enhanced Styling */}
+              <div className="inline-block mb-8 p-6 bg-gradient-to-br from-[--google-blue] to-[--google-green] rounded-full shadow-2xl transform hover:scale-110 transition-all duration-300">
+                <div className="text-7xl text-white drop-shadow-lg">☁️</div>
+              </div>
+              
+              {/* Main Title with Enhanced Typography */}
+              <h1 className="text-5xl md:text-7xl font-black mb-8 bg-gradient-to-r from-[--google-blue] via-[--google-green] to-[--google-blue] bg-clip-text text-transparent leading-tight">
+                Google Cloud Arcade Facilitator Program
+              </h1>
+              
+              {/* Subtitle with Better Styling */}
+              <div className="max-w-5xl mx-auto mb-12">
+                <p className="text-xl md:text-2xl leading-relaxed text-[--default-font-color] font-medium opacity-90">
+                  Empowering individuals to thrive in the ever-evolving world of cloud computing through hands-on learning experiences, dedicated mentorship, and a supportive community.
+                </p>
+              </div>
+              
+              {/* Enhanced CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                <a 
+                  href="https://rsvp.withgoogle.com/events/arcade-facilitator" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="group relative overflow-hidden bg-gradient-to-r from-[--google-blue] to-[--google-green] text-white text-lg px-10 py-5 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 border-2 border-transparent hover:border-[--google-yellow]"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-r from-[--google-green] to-[--google-blue] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="relative flex items-center gap-3">
+                    <FaCalendarCheck className="text-xl" />
+                    Join the Program
+                  </span>
+                </a>
+                
+                <Link
+                  to="/leaderboard"
+                  className="group relative overflow-hidden border-2 border-[--google-blue] text-[--google-blue] hover:text-white text-lg px-10 py-5 rounded-full font-bold shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 bg-transparent hover:bg-[--google-blue]"
+                >
+                  <div className="absolute inset-0 bg-[--google-blue] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                  <span className="relative flex items-center gap-3">
+                    <FaTrophy className="text-xl" />
+                    View Leaderboard
+                  </span>
+                </Link>
+              </div>
             </div>
           </div>
+          
+          {/* Decorative Elements */}
+          <div className="absolute top-10 left-10 w-20 h-20 bg-[--google-yellow]/20 rounded-full blur-xl"></div>
+          <div className="absolute bottom-10 right-10 w-32 h-32 bg-[--google-green]/20 rounded-full blur-xl"></div>
+          <div className="absolute top-1/2 left-20 w-16 h-16 bg-[--google-blue]/20 rounded-full blur-lg"></div>
         </div>
 
         {/* Program Overview */}
@@ -235,67 +264,52 @@ const GCAFPage = () => {
             </div>
           </div>
 
-          {/* External Links */}
-          <div className="bg-white rounded-3xl shadow-xl p-12 mb-16">
-            <h2 className="text-4xl font-bold mb-12 text-[--google-blue] text-center">
-              Connect With Us
-            </h2>
-            <div className="flex justify-center gap-8 flex-wrap">
-              <a 
-                href="https://rsvp.withgoogle.com/events/arcade-facilitator" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-3 px-8 py-4 bg-[--google-blue] text-white rounded-full hover:bg-[--google-green] transition-colors shadow-lg text-lg font-semibold"
-              >
-                <FaCalendarCheck className="text-xl" />
-                <span>Join Program</span>
-              </a>
-              <a 
-                href="https://go.cloudskillsboost.google/arcade" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-3 px-8 py-4 bg-[--google-green] text-white rounded-full hover:bg-[--google-blue] transition-colors shadow-lg text-lg font-semibold"
-              >
-                <FaGlobe className="text-xl" />
-                <span>Arcade Platform</span>
-              </a>
-              <a 
-                href="https://www.linkedin.com/company/google-cloud-arcade-facilitator-program-india/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="flex items-center gap-3 px-8 py-4 bg-[--google-yellow] text-white rounded-full hover:bg-[--google-red] transition-colors shadow-lg text-lg font-semibold"
-              >
-                <FaLinkedin className="text-xl" />
-                <span>LinkedIn</span>
-              </a>
-            </div>
-          </div>
+
 
           {/* CTA Section */}
           <div className="text-center">
-            <div className="bg-gradient-to-r from-[--google-blue] to-[--google-green] rounded-3xl p-12 text-white shadow-xl">
-              <h3 className="text-3xl font-bold mb-6">Ready to Transform Your Cloud Career?</h3>
-              <p className="text-xl mb-8 opacity-90 max-w-3xl mx-auto">
-                Join thousands of individuals learning Google Cloud technologies through our comprehensive 
-                and interactive program. Start your journey today and become a cloud computing leader!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <a 
-                  href="https://rsvp.withgoogle.com/events/arcade-facilitator" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="btn btn-primary bg-white text-[--google-blue] hover:bg-gray-100 text-lg px-10 py-4 font-semibold"
-                >
-                  <FaCalendarCheck className="mr-2" />
-                  Get Started Now
-                </a>
-                <Link
-                  to="/leaderboard"
-                  className="btn btn-outline border-2 border-white text-white hover:bg-white hover:text-[--google-blue] text-lg px-10 py-4 font-semibold"
-                >
-                  <FaTrophy className="mr-2" />
-                  View Leaderboard
-                </Link>
+            <div className="relative overflow-hidden bg-gradient-to-r from-[--google-blue] via-[--google-green] to-[--google-blue] rounded-3xl p-12 text-white shadow-2xl">
+              {/* Background Pattern */}
+              <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent"></div>
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[--google-yellow]/10 rounded-full blur-2xl"></div>
+              <div className="absolute bottom-0 left-0 w-24 h-24 bg-[--google-red]/10 rounded-full blur-2xl"></div>
+              
+              {/* Content */}
+              <div className="relative z-10">
+                <h3 className="text-4xl md:text-5xl font-black mb-8 bg-gradient-to-r from-white to-[--google-yellow] bg-clip-text text-transparent">
+                  Ready to Transform Your Cloud Career?
+                </h3>
+                <p className="text-xl md:text-2xl mb-10 opacity-95 max-w-4xl mx-auto font-medium leading-relaxed">
+                  Join thousands of individuals learning Google Cloud technologies through our comprehensive 
+                  and interactive program. Start your journey today and become a cloud computing leader!
+                </p>
+                
+                {/* Enhanced CTA Buttons */}
+                <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                  <a 
+                    href="https://rsvp.withgoogle.com/events/arcade-facilitator" 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="group relative overflow-hidden bg-white text-[--google-blue] text-lg px-12 py-5 rounded-full font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 border-2 border-white hover:border-[--google-yellow] hover:bg-[--google-yellow] hover:text-white"
+                  >
+                    <div className="absolute inset-0 bg-[--google-yellow] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <span className="relative flex items-center gap-3">
+                      <FaCalendarCheck className="text-xl" />
+                      Get Started Now
+                    </span>
+                  </a>
+                  
+                  <Link
+                    to="/leaderboard"
+                    className="group relative overflow-hidden border-2 border-white text-white text-lg px-12 py-5 rounded-full font-bold shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300 bg-transparent hover:bg-white hover:text-[--google-blue]"
+                  >
+                    <div className="absolute inset-0 bg-white transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+                    <span className="relative flex items-center gap-3">
+                      <FaTrophy className="text-xl" />
+                      View Leaderboard
+                    </span>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
