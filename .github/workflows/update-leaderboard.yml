@@ -7,6 +7,10 @@ on:
     branches:
       - main
 
+permissions:
+  contents: write
+  pull-requests: write
+
 jobs:
   update-leaderboard:
     runs-on: ubuntu-latest
@@ -14,7 +18,9 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-      
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
@@ -52,8 +58,8 @@ jobs:
         
     - name: Commit and push changes
       run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
+        git config --local user.email "github-actions[bot]@users.noreply.github.com"
+        git config --local user.name "github-actions[bot]"
         git add python-scripts/data.json
-        git commit -m "Auto-update leaderboard data from CSV" || echo "No changes to commit"
+        git diff --staged --quiet || git commit -m "Auto-update leaderboard data from CSV [skip ci]"
         git push
