@@ -152,10 +152,6 @@ For questions or support regarding the GCAF Website:
 - **Documentation**: Check this README and code comments
 - **Community**: Reach out to the GCAF community
 
-## License
-
-This project is part of the Google Cloud Arcade Facilitator Program. Please refer to the program guidelines for usage and distribution terms.
-
 ## Acknowledgments
 
 - Google Cloud Platform for the Arcade Facilitator Program
@@ -165,5 +161,5 @@ This project is part of the Google Cloud Arcade Facilitator Program. Please refe
 
 ---
 
-**Last Updated**: December 2024  
+**Last Updated**: Aug 2025 
 **Version**: 1.0.0
