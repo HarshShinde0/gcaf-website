@@ -110,6 +110,7 @@ class Command(BaseCommand):
                         'google_cloud_skills_boost_profile_url': user.get('Google Cloud Skills Boost Profile URL', ''),
                         'closest_milestone': closest_milestone,
                         'missing_for_closest_milestone': missing_for_closest_milestone,
+                        'total_points': total_points,
                     }
                 )
                 count += 1

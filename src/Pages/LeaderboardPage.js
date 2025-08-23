@@ -17,7 +17,8 @@ const LeaderboardPage = () => {
     '# of Skill Badges Completed',
     '# of Arcade Games Completed',
     '# of Trivia Games Completed',
-    'Milestone Earned'
+    'Milestone Earned',
+    'Total Points'  
   ];
 
   useEffect(() => {
@@ -43,6 +44,7 @@ const LeaderboardPage = () => {
           'Google Cloud Skills Boost Profile URL': user.google_cloud_skills_boost_profile_url,
           'Closest Milestone': user.closest_milestone,
           'Missing for Closest Milestone': user.missing_for_closest_milestone,
+          'Total Points': user.total_points,
         }));
         setData(mapped);
         setFilteredData(mapped);
@@ -267,7 +269,8 @@ const LeaderboardPage = () => {
                             );
                           } else if (header === '# of Skill Badges Completed' ||
                             header === '# of Arcade Games Completed' ||
-                            header === '# of Trivia Games Completed') {
+                            header === '# of Trivia Games Completed' ||
+                            header === 'Total Points') {  // Include Total Points in number badge handling
                             return (
                               <td key={cellIndex} className="px-6 py-4" dangerouslySetInnerHTML={{ __html: createNumberBadge(cellContent) }}></td>
                             );

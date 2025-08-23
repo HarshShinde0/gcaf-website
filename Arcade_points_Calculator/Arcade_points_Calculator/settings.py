@@ -21,19 +21,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$elb6(_jiy=wf03mc16wgo')
+# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$elb6(_jiy=wf03mc16wgo')
+
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
+
+# ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1']
+
+# # SECURE_HSTS_SECONDS = 31536000  # 1 year
+# # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+# # SECURE_HSTS_PRELOAD = True
+# # SECURE_SSL_REDIRECT = True
+# # SESSION_COOKIE_SECURE = True
+# # CSRF_COOKIE_SECURE = True
+SECRET_KEY = 'django-insecure-q-lalgz(=p@m^0^l$1ur$zi1_zde^=iin=!mg6ra4hu!w5g28d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
+DEBUG = True
 
-ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1']
-
-SECURE_HSTS_SECONDS = 31536000  # 1 year
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-SECURE_HSTS_PRELOAD = True
-SECURE_SSL_REDIRECT = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+ALLOWED_HOSTS = []
 
 # Application definition
 

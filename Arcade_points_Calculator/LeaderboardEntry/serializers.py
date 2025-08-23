@@ -3,7 +3,8 @@ from .models import LeaderboardEntry
 
 class LeaderboardEntrySerializer(serializers.ModelSerializer):
     achieved_milestone = serializers.CharField(source='milestone_earned', read_only=True)
-    
+    total_points = serializers.IntegerField(read_only=True)
+
     class Meta:
         model = LeaderboardEntry
         fields = [
@@ -21,5 +22,6 @@ class LeaderboardEntrySerializer(serializers.ModelSerializer):
             'profile_url_status',
             'google_cloud_skills_boost_profile_url',
             'closest_milestone',
-            'missing_for_closest_milestone'
+            'missing_for_closest_milestone',
+            'total_points'  
         ]
