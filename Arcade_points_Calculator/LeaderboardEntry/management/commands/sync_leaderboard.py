@@ -1,17 +1,28 @@
 from django.core.management.base import BaseCommand
 import requests
 import json
+import csv
+import os
+from django.conf import settings
 from LeaderboardEntry.models import LeaderboardEntry
 
-GITHUB_URL = 'https://raw.githubusercontent.com/HarshShinde0/gcaf-website/main/public/python-scripts/data.json'
-
 class Command(BaseCommand):
-    help = 'Syncs leaderboard data from GitHub JSON file to the database.'
+    help = 'Syncs leaderboard data from local CSV file to the database.'
 
     def handle(self, *args, **kwargs):
-        response = requests.get(GITHUB_URL)
-        response.raise_for_status()
-        data = response.json()
+        # Get the path to the CSV file
+        csv_path = os.path.join(settings.BASE_DIR, 'LeaderboardEntry', 'uploads', 'leaderboard_data.csv')
+        
+        if not os.path.exists(csv_path):
+            self.stdout.write(self.style.WARNING('No CSV file found. Please upload a CSV file first.'))
+            return
+        
+        # Read data from CSV file
+        data = []
+        with open(csv_path, 'r', newline='', encoding='utf-8') as csvfile:
+            reader = csv.DictReader(csvfile)
+            for row in reader:
+                data.append(row)
         count = 0
         milestones = [
             {
@@ -114,4 +125,4 @@ class Command(BaseCommand):
                     }
                 )
                 count += 1
-        self.stdout.write(self.style.SUCCESS(f'Successfully synced {count} leaderboard entries from GitHub.'))
+        self.stdout.write(self.style.SUCCESS(f'Successfully synced {count} leaderboard entries from CSV file.'))

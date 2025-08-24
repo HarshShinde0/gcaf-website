@@ -1,8 +1,10 @@
 
+from django.urls import reverse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from .models import LeaderboardEntry
 from .serializers import LeaderboardEntrySerializer
+from django.shortcuts import render, redirect
 
 class LeaderboardEntryList(APIView):
 	def get(self, request):

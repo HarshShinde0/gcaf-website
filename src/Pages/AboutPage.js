@@ -1,6 +1,7 @@
 import Backgroound from "../Components/Background";
 import HarshImg from "../Images/faculty-advisors/HS3.jpg";
 import AayushImg from "../Images/faculty-advisors/Aayush-Parashar.jpg";
+import PrakharImg from "../Images/faculty-advisors/Contributor_prakhar.jpg";
 import { FaLinkedin } from "react-icons/fa";
 
 const AboutPage = () => {
@@ -54,6 +55,35 @@ const AboutPage = () => {
         </div>
       </div>
       <div className="flex py-12 flex-col justify-center items-center px-2">
+        <div className="que collapse collapse-plus md:w-2/3">
+          <input type="radio" name="my-accordion-3" />
+          <div className="collapse-title text-xl font-medium">Contributors</div>
+          <div className="collapse-content text-justify">
+            <div className="mt-8 flex justify-center gap-8 py-4 flex-wrap px-4">
+              <div className="mcard">
+                <div className="">
+                  <div className="member-img rounded-full mx-auto border-2">
+                    <img src={PrakharImg} className="rounded-full" alt="Prakhar Dixit" />
+                  </div>
+                  <h2 className="text-center text-2xl font-semibold mt-3">
+                    Prakhar Dixit
+                  </h2>
+                  <p className="text-center mt-1">Student</p>
+                  <div className="flex justify-center mt-2">
+                    <a
+                      href="https://www.linkedin.com/in/prakhar-dixit21102006/"
+                      className="text-blue-600 hover:text-blue-500 mx-3"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaLinkedin className="text-xl" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="que collapse collapse-plus md:w-2/3">
           <input type="radio" name="my-accordion-3" />
           <div className="collapse-title text-xl font-medium">Who We Are?</div>

@@ -10,13 +10,10 @@ def arcade_points_api(request):
     for entry in entries:
         entry.total_points = (
             (entry.skill_badges_completed // 2) + 
-            (entry.arcade_games_completed if entry.arcade_games_completed < 14 else 16) + 
+            (entry.arcade_games_completed if entry.arcade_games_completed <= 14 else 16) + 
             entry.trivia_games_completed
         )
     
     serializer = LeaderboardEntrySerializer(entries, many=True)
     
     return JsonResponse({'users_summary': serializer.data})
-
-def landing_page(request):
-    return redirect('/api/leaderboard/')  # Redirect to the leaderboard API

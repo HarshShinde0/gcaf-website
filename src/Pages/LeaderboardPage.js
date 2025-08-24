@@ -444,8 +444,7 @@ const LeaderboardPage = () => {
                           target="_blank"
                           rel="noopener noreferrer"
                           className="inline-block bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 transition-colors text-sm"
-                        >
-                          View Google Cloud Profile{selectedUser['Google Cloud Skills Boost Profile URL']}
+                        ><span className="font-serif text-white">View Google Cloud Profile:</span>  {selectedUser['Google Cloud Skills Boost Profile URL']}
                         </a>
                       </div>
                     )}

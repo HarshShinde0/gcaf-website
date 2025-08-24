@@ -1,6 +1,5 @@
 from django.urls import path
-from .views import LeaderboardEntryList
-
+from LeaderboardEntry import views
 urlpatterns = [
-    path('api/leaderboard/', LeaderboardEntryList.as_view(), name='leaderboardentry-list'),
+    path('api/leaderboard/', views.LeaderboardEntryList.as_view(), name='leaderboardentry-list'),
 ]

@@ -16,6 +16,7 @@ class LeaderboardEntry(models.Model):
 	google_cloud_skills_boost_profile_url = models.URLField(blank=True)
 	closest_milestone = models.CharField(max_length=50, blank=True, null=True)
 	missing_for_closest_milestone = models.JSONField(blank=True, null=True)
+	total_points = models.IntegerField(default=0)
 
 	def __str__(self):
 		return self.user_name

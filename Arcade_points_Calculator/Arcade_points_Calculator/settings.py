@@ -24,22 +24,35 @@ import os
 # SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$elb6(_jiy=wf03mc16wgo')
 
 # # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DJANGO_DEBUG') == 'True'
+# DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-# ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1']
+# ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1', '.vercel.app']
 
-# # SECURE_HSTS_SECONDS = 31536000  # 1 year
-# # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-# # SECURE_HSTS_PRELOAD = True
-# # SECURE_SSL_REDIRECT = True
-# # SESSION_COOKIE_SECURE = True
-# # CSRF_COOKIE_SECURE = True
+# # Security settings for production - only enable when DEBUG is False
+# if not DEBUG:
+#     SECURE_SSL_REDIRECT = True
+#     SESSION_COOKIE_SECURE = True
+#     CSRF_COOKIE_SECURE = True
+#     SECURE_HSTS_SECONDS = 31536000  # 1 year
+#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+#     SECURE_HSTS_PRELOAD = True
+#     SECURE_BROWSER_XSS_FILTER = True
+#     SECURE_CONTENT_TYPE_NOSNIFF = True
+#     X_FRAME_OPTIONS = 'DENY'
+# else:
+#     # Development settings - disable HTTPS enforcement
+#     SECURE_SSL_REDIRECT = False
+#     SESSION_COOKIE_SECURE = False
+#     CSRF_COOKIE_SECURE = False
+
+
+# Remove while Deployment
 SECRET_KEY = 'django-insecure-q-lalgz(=p@m^0^l$1ur$zi1_zde^=iin=!mg6ra4hu!w5g28d'
-
-# SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
 ALLOWED_HOSTS = []
+
+
+
 
 # Application definition
 
@@ -71,7 +84,7 @@ ROOT_URLCONF = 'Arcade_points_Calculator.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -132,10 +145,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+# Media files
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# CORS settings for production
+if DEBUG:
+    CORS_ALLOW_ALL_ORIGINS = True
+else:
+    CORS_ALLOWED_ORIGINS = [
+        "http://gcaf-website.vercel.app",
+        "http://your-production-domain.com",  # Replace with your actual domain
+    ]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CORS_ALLOW_ALL_ORIGINS = True

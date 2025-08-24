@@ -21,6 +21,6 @@ from Arcade_points_Calculator import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/arcade-points/', views.arcade_points_api, name='arcade_points_api'),
-    path('', views.landing_page, name='landing_page'),
-    path('', include('LeaderboardEntry.urls')),  # Include LeaderboardEntry URLs
+    path('', include('LeaderboardEntry.urls')),
+
 ]
