@@ -21,35 +21,32 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$elb6(_jiy=wf03mc16wgo')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$elb6(_jiy=wf03mc16wgo')
 
-# # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
+# SECURITY WARNING: don't run with debug turned on in production!
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-# ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1', '.vercel.app']
 
-# # Security settings for production - only enable when DEBUG is False
-# if not DEBUG:
-#     SECURE_SSL_REDIRECT = True
-#     SESSION_COOKIE_SECURE = True
-#     CSRF_COOKIE_SECURE = True
-#     SECURE_HSTS_SECONDS = 31536000  # 1 year
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#     SECURE_HSTS_PRELOAD = True
-#     SECURE_BROWSER_XSS_FILTER = True
-#     SECURE_CONTENT_TYPE_NOSNIFF = True
-#     X_FRAME_OPTIONS = 'DENY'
-# else:
-#     # Development settings - disable HTTPS enforcement
-#     SECURE_SSL_REDIRECT = False
-#     SESSION_COOKIE_SECURE = False
-#     CSRF_COOKIE_SECURE = False
+# Security settings for production - only enable when DEBUG is False
+if not DEBUG:
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000  # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
+else:
+    # Development settings - disable HTTPS enforcement
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
 
-# Remove while Deployment
-SECRET_KEY = 'django-insecure-q-lalgz(=p@m^0^l$1ur$zi1_zde^=iin=!mg6ra4hu!w5g28d'
-DEBUG = True
-ALLOWED_HOSTS = []
+
 
 
 
@@ -156,8 +153,10 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
     CORS_ALLOWED_ORIGINS = [
-        "http://gcaf-website.vercel.app",
-        "http://your-production-domain.com",  # Replace with your actual domain
+        "https://gcaf-website.vercel.app",
+        "https://shcode.dev",
+        "https://www.shcode.dev",
+        "https://gcaf-website.onrender.com",  # Replace with your actual domain
     ]
 
 # Default primary key field type
