@@ -16,11 +16,21 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 from Arcade_points_Calculator import views
+
+# Configure admin site
+admin.site.site_header = "GCAF Leaderboard Administration"
+admin.site.site_title = "GCAF Admin Portal"
+admin.site.index_title = "Welcome to GCAF Leaderboard Administration"
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/arcade-points/', views.arcade_points_api, name='arcade_points_api'),
     path('', include('LeaderboardEntry.urls')),
-
 ]
+
+# Serve static and media files
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
