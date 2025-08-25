@@ -82,6 +82,9 @@ export default function Navbar() {
                   <NavLink to="/gcaf" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>GCAF</NavLink>
                 </li>
                 <li onClick={hideOnClick}>
+                  <NavLink to="/contributors" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Contributors</NavLink>
+                </li>
+                <li onClick={hideOnClick}>
                   <NavLink to="/contact-us" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Contact Us</NavLink>
                 </li>
           </ul>

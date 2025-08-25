@@ -19,6 +19,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import LeaderboardPage from "./Pages/LeaderboardPage";
 import LeaderboardAboutPage from "./Pages/LeaderboardAboutPage";
 import GCAFPage from "./Pages/GCAFPage";
+import ContributorsPage from "./Pages/ContributorsPage";
 import ScrollToTop from "./Components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -58,6 +59,7 @@ function App() {
               <Route path="/leaderboard" element={<LeaderboardPage />} />
               <Route path="/leaderboard/about" element={<LeaderboardAboutPage />} />
               <Route path="/gcaf" element={<GCAFPage />} />
+              <Route path="/contributors" element={<ContributorsPage />} />
               <Route path="*" element={<ErrorPage />} />
             </Route>
           </Routes>
