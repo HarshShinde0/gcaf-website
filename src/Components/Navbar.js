@@ -67,22 +67,22 @@ export default function Navbar() {
         <div className={"options z-0" + (expanded ? " right-0" : " right-full")}>
           <ul className="menu md:menu-horizontal px-0">
             <li onClick={hideOnClick}>
-              <NavLink className="nav-links" activeClassName="active-link" to="/">Home</NavLink>
+              <NavLink to="/" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Home</NavLink>
             </li>
             <li onClick={hideOnClick}>
-              <NavLink className="nav-links" activeClassName="active-link" to="/about">About us</NavLink>
+              <NavLink to="/about" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>About us</NavLink>
             </li>
             <li onClick={hideOnClick}>
-              <NavLink className="nav-links" activeClassName="active-link" to="/events">Events</NavLink>
+              <NavLink to="/events" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Events</NavLink>
             </li>
                             <li onClick={hideOnClick}>
-                  <NavLink className="nav-links" activeClassName="active-link" to="/leaderboard">Leaderboard</NavLink>
+                  <NavLink to="/leaderboard" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Leaderboard</NavLink>
                 </li>
                 <li onClick={hideOnClick}>
-                  <NavLink className="nav-links" activeClassName="active-link" to="/gcaf">GCAF</NavLink>
+                  <NavLink to="/gcaf" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>GCAF</NavLink>
                 </li>
                 <li onClick={hideOnClick}>
-                  <NavLink className="nav-links" activeClassName="active-link" to="/contact-us">Contact Us</NavLink>
+                  <NavLink to="/contact-us" className={({ isActive }) => isActive ? "nav-links active-link" : "nav-links"}>Contact Us</NavLink>
                 </li>
           </ul>
         </div>

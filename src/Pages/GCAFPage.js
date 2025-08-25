@@ -1,8 +1,8 @@
 import React from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
 import Background from '../Components/Background';
-import { FaLinkedin, FaGlobe, FaCalendarCheck, FaUsers, FaTrophy, FaCertificate, FaRocket, FaStar } from 'react-icons/fa';
+import { FaCalendarCheck, FaUsers, FaTrophy, FaCertificate, FaRocket, FaStar } from 'react-icons/fa';
 
 const GCAFPage = () => {
   return (
