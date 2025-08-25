@@ -23,7 +23,7 @@ const LeaderboardPage = () => {
 
   useEffect(() => {
     // Fetch from Django API endpoint
-    fetch('http://localhost:8000/api/arcade-points/')
+    fetch('https://gcaf-website.onrender.com/api/arcade-points/')
       .then(response => response.json())
       .then(data => {
         // Map API keys to expected column names
