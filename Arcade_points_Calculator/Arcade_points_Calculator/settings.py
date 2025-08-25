@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 's08o7di7qjlrup_o1hx_x+*yc5&b$e
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1', '.vercel.app']
+ALLOWED_HOSTS = ['gcaf-website.vercel.app', 'localhost', '127.0.0.1', '.vercel.app', 'gcaf-website.onrender.com']
 
 # Security settings for production - only enable when DEBUG is False
 if not DEBUG:
