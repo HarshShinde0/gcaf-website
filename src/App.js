@@ -22,6 +22,7 @@ import GCAFPage from "./Pages/GCAFPage";
 import ContributorsPage from "./Pages/ContributorsPage";
 import ScrollToTop from "./Components/ScrollToTop";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
 
@@ -75,6 +76,7 @@ function App() {
           )}
         </button>
         <Analytics />
+        <SpeedInsights />
       </div>
     </HelmetProvider>
   );
