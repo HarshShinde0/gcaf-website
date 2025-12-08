@@ -18,7 +18,7 @@ const AboutPage = () => {
             <h2 className="text-center text-2xl font-semibold mt-3">
               Harsh Shinde
             </h2>
-            <p className="text-center mt-1">Software Developer @ OSGeo</p>
+            <p className="text-center mt-1">Developer @ OSGeo</p>
             <div className="flex justify-center mt-2">
               <a
                 href="https://www.linkedin.com/in/harshshinde/"
